@@ -1,0 +1,514 @@
+/*通用*/
+
+button {
+    outline: 0;
+}
+
+.icons {
+    color: darkgray;
+}
+
+.vertical-center {
+    vertical-align: middle;
+    display: flex; /*Flex布局*/
+    display: -webkit-flex; /* Safari */
+    align-items: center; /*指定垂直居中*/
+}
+
+a {
+    cursor: pointer;
+}
+
+.BLOG {
+    font-size: 1.6em;
+    color: #767676;
+    font-family: 华文中宋, serif;
+}
+
+.BLOG-white {
+    color: white;
+    font-family: 华文中宋, serif;
+}
+
+.form-input:focus {
+    outline: 0;
+    border-bottom: solid 1px #09b0e1;
+}
+
+.form-input {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: solid 1px lightgray;
+    width: 100%;
+    padding: 8px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    /*border: 1px solid #CCC !important;*/
+}
+
+.default-line {
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+h4.default-h4 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.dialog-title-container {
+    background-color: #FCFCFC;
+    /*color: #656565;*/
+}
+
+.dialog-title {
+    text-align: center;
+    color: #656565;
+    font-family: 华文中宋, 方正姚体, serif;
+    font-weight: bolder;
+}
+
+.dialog-body {
+    background-color: white;
+    color: black;
+    padding: 32px;
+}
+
+.dialog-footer {
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.dialog-title-container-middle {
+    background-color: #FCFCFC;
+    /*color: #656565;*/
+    width: 120%;
+}
+
+.error-msg {
+    color: red;
+    font-size: medium;
+    padding: 4px 8px;
+    display: none;
+}
+
+.default-textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 0;
+    padding: 8px;
+}
+
+.vertical-line {
+    color: lightgray;
+}
+
+/*----------------------------------------------------------------------------------------------------------------按钮*/
+.button-info {
+    border: solid 1px lightgray;
+    border-radius: 8px;
+    background-color: transparent;
+    color: dimgray;
+    padding: 3px 6px;
+    font-size: small;
+}
+
+.button-info:hover {
+    background-color: dimgray;
+    color: white;
+}
+
+.button-success:hover {
+    background-color: #00b4a5;
+    color: white;
+    box-shadow: -3px 3px 10px darkgray;
+}
+
+.button-success:active {
+    background-color: #00ddca;
+    color: white;
+    box-shadow: -3px 3px 10px darkgray;
+}
+
+.button-success {
+    outline: none;
+    background-color: #00CBBA;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 32px;
+    border: 0;
+    font-size: medium;
+    box-shadow: -2px 10px 20px lightgray;
+    transition: box-shadow 400ms, background-color 400ms;
+}
+
+.button-save:hover {
+    background-color: #33c666;
+    color: white;
+    box-shadow: -3px 3px 10px darkgray;
+}
+
+.button-save:active {
+    background-color: #39dd72;
+    color: white;
+    box-shadow: -3px 3px 10px darkgray;
+}
+
+.button-save {
+    outline: none;
+    background-color: #39dd72;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 32px;
+    border: 0;
+    font-size: medium;
+    box-shadow: -2px 10px 20px lightgray;
+    transition: box-shadow 400ms, background-color 400ms;
+}
+
+.button-dangerous:hover {
+    background-color: #dc1b15;
+    color: white;
+    box-shadow: -3px 3px 10px darkgray;
+}
+
+.button-dangerous:active {
+    background-color: #cc5441;
+    color: white;
+    box-shadow: -3px 3px 10px darkgray;
+}
+
+.button-dangerous {
+    outline: none;
+    background-color: #e5433d;
+    color: white;
+    padding: 8px 40px;
+    border: 0;
+    font-size: medium;
+    border-radius: 5px;
+    box-shadow: -2px 10px 20px lightgray;
+    transition: box-shadow 400ms, background-color 400ms;
+}
+
+/*---------------------------------------------button-edit*/
+.button-edit-new {
+    border-radius: 10px;
+    border: solid 1px limegreen;
+    background-color: transparent;
+    color: green;
+    margin: 0 auto;
+    padding: 2px 8px;
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: small;
+}
+
+.button-edit-new:hover {
+    background-color: green;
+    color: white;
+}
+
+.button-edit {
+    border-radius: 10px;
+    border: solid 1px lightgray;
+    background-color: transparent;
+    color: gray;
+    margin: 0 auto;
+    padding: 2px 8px;
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: small;
+}
+
+.button-edit:hover {
+    background-color: gray;
+    color: white;
+}
+
+.button-edit-delete {
+    border-radius: 10px;
+    border: solid 1px palevioletred;
+    background-color: transparent;
+    color: red;
+    margin: 0 auto;
+    padding: 2px 8px;
+    cursor: pointer;
+    opacity: 0.7;
+    font-size: small;
+}
+
+.button-edit-delete:hover {
+    background-color: red;
+    color: white;
+}
+
+.button-edit-check {
+    border-radius: 10px;
+    border: solid 1px deepskyblue;
+    background-color: transparent;
+    color: dodgerblue;
+    margin: 0 auto;
+    padding: 2px 8px;
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: small;
+}
+
+.button-edit-check:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.button-operation {
+    border: solid 1px lightgray;
+    background-color: #efefef;
+    color: dimgray;
+    padding: 5px 16px;
+    cursor: pointer;
+    cursor: pointer;
+    outline: none;
+    font-weight: normal;
+}
+
+.button-operation:hover {
+    border: solid 1px gray;
+    background-color: lightgray;
+    padding: 5px 16px;
+}
+
+/*登录方式，编辑（标签）方式*/
+.indicator:hover {
+    border-bottom: solid 2px black;
+}
+
+.indicator {
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+
+.border0 {
+    border: solid 0;
+}
+
+.center-icon {
+    text-align: center;
+    width: 100%;
+    color: lightgray;
+}
+
+.center-icon:hover {
+    color: gray;
+}
+
+.modify-item-choosed:hover {
+    background-color: #e0e0e0;
+}
+
+.modify-item-choosed {
+    color: darkgray;
+    border-radius: 10px;
+    border: solid 1px lightgray;
+    font-size: smaller;
+    padding: 2px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.shadow-border {
+    border: solid 1px #DBE2E8;
+    /*transition: box-shadow 500ms, border-radius 500ms;*/
+    transition: all 0.3s ease-in-out;
+    /*box-shadow: -2px 2px 8px #e2e2e2;*/
+    /*box-shadow: 0 0 20px #e2e2e2;*/
+}
+
+.border {
+    border: solid 1px #DBE2E8;
+    /*box-shadow: -2px 2px 8px #e2e2e2;*/
+    /*box-shadow: 0 0 20px #e2e2e2;*/
+}
+
+.shadow-border:hover {
+    border-radius: 20px;
+    transform: scale(1.02);
+    box-shadow: 0 0 30px #d7d7d7;
+}
+
+.shadow {
+    box-shadow: 0 0 30px #e2e2e2;
+}
+
+.count {
+    color: orangered;
+    font-size: small;
+}
+
+/*相同样式在同一选择其中在 css 文件中越靠后，优先级越高*/
+/*https://www.cnblogs.com/zhangpengshou/archive/2012/08/08/2628737.html*/
+.button-disable:hover {
+    cursor: not-allowed;
+    box-shadow: 0 0 0 transparent;
+    opacity: 0.6;
+}
+
+.button-disable {
+    cursor: not-allowed;
+    box-shadow: 0 0 0 transparent;
+    opacity: 0.6;
+}
+
+.button-info-disable {
+    cursor: not-allowed;
+    background-color: lightgray;
+    color: dimgray;
+}
+
+.button-info-disable:hover {
+    cursor: not-allowed;
+    background-color: lightgray;
+    color: dimgray;
+}
+
+.operation-container button {
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+    border-bottom: solid 1px lightgray;
+    font-size: x-small;
+    padding: 5px;
+}
+
+.operation-container button:hover {
+    background-color: lightgray;
+}
+
+.operation-container {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    border: solid 1px lightgray;
+
+    z-index: 9999;
+
+    text-align: center;
+
+    background: white;
+    color: dimgray;
+
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.icon13px-clickable {
+    opacity: 0.5;
+    width: 13px;
+    height: 13px;
+    cursor: pointer;
+}
+
+.icon13px {
+    opacity: 0.5;
+    width: 13px;
+    height: 13px;
+}
+
+.icon13px-clickable:hover {
+    opacity: 1;
+}
+
+.img24px {
+    opacity: 0.5;
+    width: 24px;
+    height: 24px;
+}
+
+.img48px {
+    width: 48px;
+    height: 48px;
+}
+
+.img32px {
+    width: 32px;
+    height: 32px;
+}
+
+.img64px {
+    width: 64px;
+    height: 64px;
+}
+
+.img58px {
+    width: 58px;
+    height: 58px;
+}
+
+.img92px {
+    width: 92px;
+    height: 92px;
+}
+
+.img108px {
+    width: 108px;
+    height: 108px;
+}
+
+.img128px {
+    width: 128px;
+    height: 128px;
+}
+
+.clickable-gray:hover {
+    background-color: #ebebeb;
+}
+
+.jianshu-style-input {
+    min-width: 40%;
+    border: solid 1px lightgray;
+    padding: 5px;
+    font-size: 0.9em;
+    background-color: rgba(236, 236, 236, 0.22);
+    border-radius: 5px;
+    transition: all 300ms;
+}
+
+.jianshu-style-input:focus {
+    outline: 0;
+    background-color: white;
+    box-shadow: 0 0 30px #e2e2e2;
+    border: solid 1px deepskyblue;
+}
+
+.jianshu-style-textarea:focus {
+    background-color: white;
+    outline: 0;
+    box-shadow: 0 0 30px #e2e2e2;
+    border: solid 1px deepskyblue;
+}
+
+.jianshu-style-textarea {
+    min-width: 40%;
+    min-height: 100px;
+    border: solid 1px lightgray;
+    padding: 8px;
+    font-size: 0.9em;
+    background-color: rgba(211, 211, 211, 0.22);
+    border-radius: 8px;
+    transition: all 300ms;
+}
+
+.website-logo {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.8;
+}
+
+.website-logo:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
