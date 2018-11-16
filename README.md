@@ -9,7 +9,8 @@
 
 司机可以选择接单，接单后再乘客没有上车前可以取消订单；接单后的司机将会直接跳转到正在进行的行程列表页，不能继续再接新的订单了，直到当前订单结单后
 
-
+司机申请结单：
+![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E7%94%B3%E8%AF%B7%E7%BB%93%E5%8D%95.png?raw=true) 
 
 
 取消订单分为两种：
