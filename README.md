@@ -29,8 +29,10 @@
 ![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E8%AF%84%E4%BB%B7%E9%A1%B5%E9%9D%A2.png?raw=true)
 
 ![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E6%97%A0%E9%87%8D%E5%A4%8D%E8%AF%84%E4%BB%B7.png?raw=true)
-乘客页面：
+![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E5%8F%B8%E6%9C%BA%E6%8E%A5%E5%8D%95.png?raw=true)
 
+乘客页面：
+![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E4%B9%98%E5%AE%A2%E7%BB%93%E6%9D%9F%E8%AE%A2%E5%8D%95%E9%A1%B5%E9%9D%A2.png?raw=true)
 司机页面：
 
 
