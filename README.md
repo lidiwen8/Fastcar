@@ -1,7 +1,7 @@
 线上地址：http://www.lidiwen.club/Fastcar/
 
 登录界面：
-[!]https://github.com/lidiwen8/Fastcar/web/Images/乘客登录.png 
+![image](https://github.com/lidiwen8/Fastcar/web/Images/乘客登录.png) 
 
 乘客创建订单
 乘客可以在当前订单没有被任何司机接单前创建新的订单
