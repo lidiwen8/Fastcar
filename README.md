@@ -37,5 +37,6 @@
 同一用户登录不能重复登录，必须等待当前用户退出后，或者半小时后seession失效后
 
 代码结构：
+![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84.png?raw=true)
 
 
