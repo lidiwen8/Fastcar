@@ -26,8 +26,9 @@
 
 如果有乘客给了司机一星的差评话，该司机自当前订单结束两个小时内不能继续接新的订单哟！！！！！
 乘客只能对司机评价一次，重复评价是无效的
+![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E8%AF%84%E4%BB%B7%E9%A1%B5%E9%9D%A2.png?raw=true)
 
-
+![image](https://github.com/lidiwen8/Fastcar/blob/cc5da341664302de7767400c92a7a0c42fba9914/web/Images/%E6%97%A0%E9%87%8D%E5%A4%8D%E8%AF%84%E4%BB%B7.png?raw=true)
 乘客页面：
 
 司机页面：
