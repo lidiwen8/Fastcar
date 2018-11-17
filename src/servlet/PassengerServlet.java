@@ -224,7 +224,7 @@ public class PassengerServlet extends HttpServlet {
 		order.setDestination(destination);
 		if(orderService.queryOrder(passenger)!=null) {
 			Order order1 = orderService.queryOrder(passenger);
-			if (order1.getStates() == 1||order1.getStates() == 3||order1.getStates() == 0) {
+			if (order1.getStates() == 1||order1.getStates() == 3||order1.getStates() == 0||order1.getStates()==4) {
 				response.getWriter().print("{\"res\": 2, \"info\":\"你当前还有订单正在进行中，不能创建新的订单\"}");
 				return;
 			}
@@ -243,6 +243,25 @@ public class PassengerServlet extends HttpServlet {
 			}
 		}
 	}
+
+	public void passengerpayment(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int orderid = Integer.parseInt(request.getParameter("id"));
+		try {
+			Order order = orderService.queryOrderByid(orderid);
+			Date day = new Date();
+			SimpleDateFormat da = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//乘客结算当前时间作为最终结单时间
+			order.setEndtime(da.format(day));
+			if (order != null) {
+				request.setAttribute("order", order);
+				request.getRequestDispatcher("passenger/payment.jsp").forward(request, response);
+				return;
+			}
+		}catch (NullPointerException e){
+			request.getRequestDispatcher("passenger/currentlist.jsp").forward(request, response);
+			return;
+		}
+	}
+
 
 
 	public void passengerevaluate(HttpServletRequest request, HttpServletResponse response) throws Exception {

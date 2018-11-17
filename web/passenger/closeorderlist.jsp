@@ -42,6 +42,7 @@
                 <th>接单时间</th>
                 <th>订单结束日期</th>
                 <th>订单状态</th>
+                <th>订单总金额</th>
                 <th>评价信息</th>
                 <th>操作</th>
             </tr>
@@ -70,6 +71,7 @@
                     <c:if test="${cstm.states==2}">
                         <td>已结单</td>
                     </c:if>
+                    <td>${cstm.orderprize}</td>
                     <c:if test="${not empty cstm.evaluate}">
                         <td>${cstm.evaluate}</td>
                     </c:if>

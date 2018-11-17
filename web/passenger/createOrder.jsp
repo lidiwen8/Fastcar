@@ -88,7 +88,8 @@
             success : function(data) {
                 if (data.res == 1) {
                     alert(data.info);
-                    window.location.replace("orderServlet?action=findOrder");
+                    // window.location.replace("orderServlet?action=findOrder");
+                    window.location.replace("orderServlet?action=currentorder");
                 }else if(data.res==2){
                     alert(data.info);
                     window.location.replace("orderServlet?action=currentorder");

@@ -12,8 +12,8 @@ public class Order {
     private String createtime;//订单创建时间
     private String singletime;//司机接单时间
     private String endtime;//订单结束时间
-
-    private Integer states;//订单状态有  -1：取消订单；0：未接单；1：已接单；2：已结单;3:确认乘客已上车
+    private float orderprize;//订单金额
+    private Integer states;//订单状态有  -1：取消订单；0：未接单；1：已接单；2：已结单;3:确认乘客已上车4;:等待乘客支付中
     private String statesmean;//订单状态中文含义
     private String taximode;//打车方式：快车，顺风车，专车，商务车
     private String passengernumber;//乘客联系方式
@@ -149,5 +149,13 @@ public class Order {
 
     public void setSingletime(String singletime) {
         this.singletime = singletime;
+    }
+
+    public float getOrderprize() {
+        return orderprize;
+    }
+
+    public void setOrderprize(float orderprize) {
+        this.orderprize = orderprize;
     }
 }

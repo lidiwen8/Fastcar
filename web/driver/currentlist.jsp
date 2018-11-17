@@ -130,6 +130,13 @@
                             <button class="btn btn-danger btn-sm delete_btn" onclick="deleteOrderByid(${order.orderid})"><span class="glyphicon glyphicon-trash">取消订单</span></button>
                         </td>
                     </c:if>
+                    <c:if test="${order.states==4}">
+                        <td>
+                            <button class="btn btn-success" onclick="javascript:window.location.href='orderServlet?action=queryOrderByid&id=${order.orderid}'">详情</button>
+                            <button class="btn btn-primary btn-sm edit_btn" onclick="closeorder(${order.orderid})"><span class="glyphicon glyphicon-pencil">等待乘客支付中</span></button>
+                            <button class="btn btn-danger btn-sm delete_btn" onclick="deleteOrderByid(${order.orderid})"><span class="glyphicon glyphicon-trash">取消订单</span></button>
+                        </td>
+                    </c:if>
                 </tr>
                 </tbody>
         </table>

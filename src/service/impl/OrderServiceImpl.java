@@ -70,5 +70,9 @@ public class OrderServiceImpl implements OrderService {
     }
     @Override
    public Order queryOrderByid(int orderid){return orderDao.queryOrderByid(orderid);}
+   @Override
+   public int closeorderBypassengerpayment(int orderid)throws Exception{
+       return orderDao.closeorderBypassengerpayment(orderid);
+   }
 
 }

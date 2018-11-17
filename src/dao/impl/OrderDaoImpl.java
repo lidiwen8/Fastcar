@@ -18,7 +18,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public Order queryOrder(String username){
         try {
-            return mysqlDao.query("select * from order1 where username=? and (states=? or states=? or states=?)", new BeanHandler<Order>(Order.class), username,1,3,0);
+            return mysqlDao.query("select * from order1 where username=? and (states=? or states=? or states=? or states=?)", new BeanHandler<Order>(Order.class), username,1,3,0,4);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -142,13 +142,35 @@ public class OrderDaoImpl implements OrderDao {
         return flag;
     }
 
-
+//司机申请结单，等待乘客支付状态
     @Override
     public int closeorderByid(int orderid)throws Exception {
         int flag = 0;
         Date day = new Date();
         SimpleDateFormat da = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//订单结束时间
-        String sql = "update order1 set states=? ,endtime=? where orderid=?";
+        float orderprize=(int)(Math.random()*91)+10 ;//模拟订单金额10-100
+        String sql = "update order1 set states=? ,orderprize=? where orderid=?";
+        Object[] params = {4,orderprize,orderid};
+        try {
+            //事务开始
+            mysqlDao.update(sql, params);
+            flag = 1;
+            //事务提交
+        } catch (Exception e) {
+            e.printStackTrace();
+            //事务回滚
+            flag = 0;
+            throw e;
+        }
+        return flag;
+    }
+//乘客支付完成，订单真正结束
+    @Override
+    public int closeorderBypassengerpayment(int orderid)throws Exception {
+        int flag = 0;
+        Date day = new Date();
+        SimpleDateFormat da = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//乘客结算完成时间作为最终结单时间
+        String sql = "update order1 set states=?,endtime=? where orderid=?";
         Object[] params = {2,da.format(day),orderid};
         try {
             //事务开始
@@ -234,13 +256,13 @@ public class OrderDaoImpl implements OrderDao {
             PageBean<Order> pb=new PageBean<>();
             pb.setPc(pc);
             pb.setPr(pr);
-            String sql="select count(*) from order1 where states=? and drivername=?";
-            Object[] param={states,drivername};
+            String sql="select count(*) from order1 where (states=? or states=?) and drivername=?";
+            Object[] param={states,4,drivername};
             Number number=(Number) mysqlDao.query(sql,new ScalarHandler<>(),param);
             int tr=number.intValue();
             pb.setTr(tr);
-            sql="select * from order1 where states=? and drivername=? order by orderid limit ?,?";
-            Object[] params={states,drivername,(pc-1)*pr,pr};
+            sql="select * from order1 where (states=? or states=?) and drivername=? order by orderid limit ?,?";
+            Object[] params={states,4,drivername,(pc-1)*pr,pr};
             List<Order> beanList=mysqlDao.query(sql,new BeanListHandler<>(Order.class),params);
             pb.setBeanList(beanList);
             return pb;

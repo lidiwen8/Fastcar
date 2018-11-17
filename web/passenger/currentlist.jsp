@@ -87,6 +87,9 @@
                     <td>
                         <button class="btn btn-primary btn-sm edit_btn" onclick="javascript:window.location.href='orderServlet?action=findOrderbyorderid&id=${order.orderid}'"><span class="glyphicon glyphicon-pencil">详情</span></button>
                         <button class="btn btn-danger btn-sm delete_btn" onclick="deleteOrderByid(${order.orderid})"><span class="glyphicon glyphicon-trash">取消订单</span></button>
+                        <c:if test="${order.states==4}">
+                            <button class="btn btn-primary btn-sm edit_btn" onclick="javascript:window.location.href='passengerServlet?action=passengerpayment&id=${order.orderid}'">支付</button>
+                         </c:if>
                         <button type="button" class="btn btn-success" onclick="javascript:window.location.href='passenger/index.jsp'">返回</button>
                     </td>
                 </tr>

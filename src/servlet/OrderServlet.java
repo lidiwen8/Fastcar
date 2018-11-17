@@ -54,6 +54,9 @@ public class OrderServlet extends HttpServlet {
             return "palogin.jsp";
         }
         PageBean<Order> pb = orderService.findOrder(pc, pr, passenger);
+        if(pb.equals(null)){
+            request.getRequestDispatcher("orderServlet?action=currentorder").forward(request,response);
+        }
         pb.setUrl(getUrl(request));
         request.setCharacterEncoding("utf-8");
         request.setAttribute("pb", pb);
@@ -217,6 +220,9 @@ public class OrderServlet extends HttpServlet {
         }else if(order.getStates()==2){
             response.getWriter().print("{\"res\": -1, \"info\":\"订单号为"+orderid+"的订单已经结单了，不能取消订单了\"}");
             return;
+        }else if(order.getStates()==4){
+            response.getWriter().print("{\"res\": -1, \"info\":\"你的行程已经结束了，请尽快支付你此次行程的车费，做个有信用的人\"}");
+            return;
         }
         else {
             if(orderService.deleteOrderByid(orderid)==1){
@@ -273,6 +279,9 @@ public class OrderServlet extends HttpServlet {
             if(order.getStates()==0){
                 order.setStatesmean("未接单");
             }
+            if(order.getStates()==4){
+                order.setStatesmean("等待你的支付中");
+            }
             request.setAttribute("order", order);
             request.getRequestDispatcher("passenger/currentlist.jsp").forward(request,response);
             return  order;
@@ -294,7 +303,11 @@ public class OrderServlet extends HttpServlet {
              }else if(order.getStates()==3){
                  order.setStatesmean("乘客已上车");
                  order.setEndtime("当前订单未结束");
-             }else{
+             }else if(order.getStates()==4){
+                 order.setStatesmean("等待乘客支付中");
+                 order.setEndtime("当前订单未结束");
+             }
+             else{
                  order.setDrivername("当前还没有司机接单");
                  order.setDrviernumber("没有司机接单");
                  order.setEndtime("没有接单");
@@ -334,7 +347,7 @@ public class OrderServlet extends HttpServlet {
                order.setStatesmean("乘客已上车");
             }
             request.setAttribute("order1", order);
-            System.out.println(JsonUtil.Json(order));//实体对象转json
+            JsonUtil.Json(order);//实体对象转json
             response.getWriter().print("{\"res\": 1, \"info\":\""+order.getUsername()+"乘客已上车\"}");
             return;
         }else{
@@ -380,11 +393,32 @@ public class OrderServlet extends HttpServlet {
             request.setAttribute("order", order);
             request.getRequestDispatcher("driver/closeorder.jsp").forward(request, response);
             return;
-        } else {
+        } else if(order.getStates()==4){
+            order.setStatesmean("等待乘客支付中");
+            request.setAttribute("order", order);
+            request.getRequestDispatcher("driver/closeorder.jsp").forward(request, response);
+            return;
+        }
+        else {
+            request.setAttribute("order1", order);
             request.getRequestDispatcher("driver/boardingorder.jsp").forward(request, response);
             return;
         }
     }
+      //乘客支付订单结算
+    public  void orderSettlement(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        int orderid = Integer.parseInt(request.getParameter("id"));
+        if(orderService.closeorderBypassengerpayment(orderid)==1){
+            request.getRequestDispatcher("orderServlet?action=findcloseOrder").forward(request, response);
+            return;
+        } else {
+            Order order=orderService.queryOrderByid(orderid);
+            request.setAttribute("order",order);
+            request.getRequestDispatcher("passenger/currentlist.jsp").forward(request, response);
+            return;
+        }
+    }
+
 
     public  String closeorderAndroid(HttpServletRequest request, HttpServletResponse response)throws Exception {
         int orderid = Integer.parseInt(request.getParameter("id"));
@@ -419,7 +453,7 @@ public class OrderServlet extends HttpServlet {
         String driver = (String) session.getAttribute("driver");//获取登陆司机
         //改变司机自身状态和订单状态
         if(orderService.closeorderByid(orderid)==1&&driverService.changedriverstates2(driver)==1) {
-            response.getWriter().print("{\"res\": 1, \"info\":\"订单号为"+orderid+"的订单已经结单了\"}");
+            response.getWriter().print("{\"res\": 1, \"info\":\"订单号为"+orderid+"的订单已经申请结单了，正在等待乘客支付中！\"}");
             return;
         }else{
             response.getWriter().print("{\"res\": -1, \"info\":\"结束订单失败，请重试\"}");

@@ -20,5 +20,6 @@ public interface OrderService {
     Order queryOrderBypaexist(String username,int states);//根据乘客姓名和订单状态查找订单
     Order queryOrderBydrexist(String drivername,int states);//根据司机姓名和订单状态查找订单
     PageBean<Order> findOrderAll(int pc, int pr);//分页查找全部乘客发起的订单
+    int closeorderBypassengerpayment(int orderid)throws Exception;//乘客支付完成订单真正结束
 
 }

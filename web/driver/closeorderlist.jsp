@@ -40,6 +40,7 @@
                 <th>订单结束日期</th>
                 <th>接单司机</th>
                 <th>订单状态</th>
+                <th>订单总金额</th>
                 <th>评价信息</th>
                 <th>操作</th>
             </tr>
@@ -55,7 +56,12 @@
                     <td>${cstm.passengernumber}</td>
                     <td>${cstm.taximode}</td>
                     <td>${cstm.createtime}</td>
+                    <c:if test="${not empty cstm.endtime}">
                     <td>${cstm.endtime}</td>
+                    </c:if>
+                    <c:if test="${empty cstm.endtime}">
+                        <td>乘客未支付</td>
+                    </c:if>
                     <td>${cstm.drivername}</td>
                     <c:if test="${cstm.states==0}">
                         <td>未接单</td>
@@ -68,6 +74,15 @@
                    </c:if>
                     <c:if test="${cstm.states==3}">
                         <td>乘客已上车</td>
+                    </c:if>
+                    <c:if test="${cstm.states==4}">
+                        <td>等待乘客支付中</td>
+                    </c:if>
+                    <c:if test="${order.orderprize!=0}">
+                        <td>${cstm.orderprize}</td>
+                    </c:if>
+                    <c:if test="${empty cstm.orderprize}">
+                        <td>乘客未支付</td>
                     </c:if>
                     <c:if test="${not empty cstm.evaluate}">
                         <td>${cstm.evaluate}</td>

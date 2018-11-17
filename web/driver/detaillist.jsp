@@ -44,6 +44,9 @@
                 </c:if>
                 <th>订单结束日期</th>
                 <th>订单状态</th>
+                <c:if test="${order.orderprize!=0}">
+                    <th>订单总金额</th>
+                </c:if>
                 <th>评价信息</th>
                 <th>评价详情</th>
                 <th>操作</th>
@@ -65,6 +68,9 @@
                 </c:if>
                 <td>${order.endtime}</td>
                 <td>${order.statesmean}</td>
+                <c:if test="${order.orderprize!=0}">
+                    <td>${order.orderprize}</td>
+                </c:if>
                 <c:if test="${not empty order.evaluate}">
                     <td>${order.evaluate}</td>
                 </c:if>

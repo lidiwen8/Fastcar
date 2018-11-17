@@ -18,5 +18,6 @@ public interface OrderDao {
     PageBean<Order> closeorderbydrivername(int pc, int pr, String drivername,int states);
     Order queryOrderByid(int orderid);
     Order queryOrderBydrexist(String drivername,int states);
+    int closeorderBypassengerpayment(int orderid)throws Exception;//乘客支付完成订单真正结束
     Order queryOrderBypaexist(String username,int states);
 }
