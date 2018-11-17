@@ -36,9 +36,9 @@
                 <th>乘客联系方式</th>
                 <th>叫车类型</th>
                 <th>订单创建日期</th>
-
-                <%--<th>订单结束日期</th>--%>
-
+                <c:if test="${not empty order.endtime}">
+                <th>订单结束日期</th>
+                </c:if>
                 <th>订单状态</th>
                 <th>操作</th>
             </tr>
@@ -52,7 +52,9 @@
                 <td>${order.passengernumber}</td>
                 <td>${order.taximode}</td>
                 <td>${order.createtime}</td>
-                <%--<td>${order.endtime}</td>--%>
+                <c:if test="${not empty order.endtime}">
+                <td>${order.endtime}</td>
+                </c:if>
                 <td>${order.statesmean}</td>
                 <td>
                     <button class="btn btn-primary btn-sm edit_btn" onclick="javascript:window.location.href='driver/index.jsp'"><span class="glyphicon glyphicon-pencil">返回首页</span></button>
