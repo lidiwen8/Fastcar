@@ -30,8 +30,9 @@
                     dataType: "json",
                     success: function (data) {
                         if (data.res == 1) {
-                            alert(data.info);//接单成功，跳转至当前订单进行详情页面
-                            window.location.replace("orderServlet?action=queryOrderByid&id="+orderid);
+                            alert(data.info);//接单成功，跳转至当前订单进行页面
+                            // window.location.replace("orderServlet?action=queryOrderByid&id="+orderid);
+                            window.location.replace("orderServlet?action=queryOrderbydrivername");
                         }
                         else if(data.res == 2){
                             alert(data.info);

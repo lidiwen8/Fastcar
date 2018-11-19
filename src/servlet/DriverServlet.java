@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -143,9 +144,13 @@ public class DriverServlet extends HttpServlet {
 						if(fen>30){
 							ServletContext application1 = this.getServletContext();
 							application1.removeAttribute("driver");
-							request.setAttribute("info", "系统开了点小差，请再尝试一次登录！");
-							request.getRequestDispatcher("drlogin.jsp").forward(request, response);
-							return;
+							if(request.getSession().getAttribute("driver") != null) {
+								request.getSession().invalidate();//使session无效
+							}
+							login(request,response);
+//							request.setAttribute("info", "系统开了点小差，请再尝试一次登录！");
+//							request.getRequestDispatcher("drlogin.jsp").forward(request, response);
+//							return;
 						}else{
 							request.setAttribute("info", "你已经登录了，不能重复登录！");
 							request.getRequestDispatcher("drlogin.jsp").forward(request, response);

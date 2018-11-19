@@ -142,9 +142,13 @@ public class PassengerServlet extends HttpServlet {
 						if(fen>30){
 							ServletContext application1 = this.getServletContext();
 							application1.removeAttribute("passenger");
-							request.setAttribute("info", "系统开了点小差，请再尝试一次登录！");
-							request.getRequestDispatcher("palogin.jsp").forward(request, response);
-							return;
+							if(request.getSession().getAttribute("passenger") != null) {
+								request.getSession().invalidate();//使session无效
+							}
+							login(request,response);
+//							request.setAttribute("info", "系统开了点小差，请再尝试一次登录！");
+//							request.getRequestDispatcher("palogin.jsp").forward(request, response);
+//							return;
 						}else{
 							request.setAttribute("info", "你已经登录了，不能重复登录！");
 							request.getRequestDispatcher("palogin.jsp").forward(request, response);
