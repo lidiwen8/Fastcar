@@ -4,7 +4,9 @@ import dao.PassengerDao;
 import dao.impl.PassengerDaoImpl;
 import entity.Order;
 import entity.Passenger;
-public class PassengerServiceImpl implements PassengerDao {
+import service.PassengerService;
+
+public class PassengerServiceImpl implements PassengerService {
     PassengerDao passengerDao= new PassengerDaoImpl();
     @Override
     public Passenger login(String name, String password){return passengerDao.login(name,password);}
