@@ -12,4 +12,5 @@ public interface DrvierDao {
     int receiptOrder2(int orderid) throws Exception;
     int changedriverstates(String name) throws Exception;
     int changedriverstates2(String name) throws Exception;
+    int application(Driver driver)throws Exception;//司机申请审核
 }

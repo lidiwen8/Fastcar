@@ -44,5 +44,9 @@ public class DrvierServiceImpl implements DriverService {
     public int changedriverstates2(String name)throws Exception{
         return drvierDao.changedriverstates2(name);
     }
+    @Override
+    public int application(Driver driver)throws Exception{
+        return drvierDao.application(driver);
+    }
 
 }

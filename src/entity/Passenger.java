@@ -17,6 +17,7 @@ public class Passenger {
     private Integer states;
     private String statesmean;//乘客状态中文含义
     private String logintime;//最后一次登陆时间
+    private String registertime;//乘客注册时间
     public Integer getPassengerid() {
         return passengerid;
     }
@@ -95,5 +96,13 @@ public class Passenger {
 
     public void setLogintime(String logintime) {
         this.logintime = logintime;
+    }
+
+    public String getRegistertime() {
+        return registertime;
+    }
+
+    public void setRegistertime(String registertime) {
+        this.registertime = registertime;
     }
 }

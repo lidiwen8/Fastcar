@@ -33,6 +33,9 @@
           $("#4").click(function(){
               window.location.href='orderServlet?action=queryOrderbydrivername';
           });
+          $("#5").click(function(){
+              window.location.href='driverServlet?action=queryDriver';
+          });
       })
       function loadmsg() {
           var msg ="<%=request.getAttribute("info")%>";
@@ -57,6 +60,11 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-2 col-xs-6">
       <button class="btn btn-primary" type="button" id="2">查看已结束的订单</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2 col-xs-6">
+      <button class="btn btn-info" type="button" id="5">查看个人信息</button>
     </div>
   </div>
   <div class="form-group">

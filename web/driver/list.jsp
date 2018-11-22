@@ -37,6 +37,12 @@
                         else if(data.res == 2){
                             alert(data.info);
                             window.location.replace("orderServlet?action=queryOrderbydrivername");
+                        }else if(data.res==3){
+                            alert(data.info);
+                            window.location.replace("driver/application.jsp");
+                        }else if(data.res==4){
+                            alert(data.info);
+                            window.location.replace("driverServlet?action=queryDriver");
                         }
                         else {
                             alert(data.info);

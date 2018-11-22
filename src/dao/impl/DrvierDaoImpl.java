@@ -114,6 +114,25 @@ public class DrvierDaoImpl implements DrvierDao {
         }
         return flag;
     }
+
+    @Override
+    public int application(Driver driver)throws Exception{
+        int flag=0;
+        String sql ="update driver set relname=?,motorcycle=?,carcolor=?,idcard=?,platenumber=?,birthday=?,examineStates=? where name=?";
+        Object[] params={driver.getRelname(),driver.getMotorcycle(),driver.getCarcolor(),driver.getIdcard(),driver.getPlatenumber(),driver.getBirthday(),3,driver.getName()};
+        try {
+            //事务开始
+            mysqlDao.update(sql,params);
+            flag=1;
+            //事务提交
+        } catch (Exception e) {
+            e.printStackTrace();
+            //事务回滚
+            flag=0;
+            throw e;
+        }
+        return flag;
+    }
     @Override
     public int changedriverstates2(String name)throws Exception{
         int flag=0;

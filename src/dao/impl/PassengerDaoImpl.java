@@ -24,8 +24,10 @@ public class PassengerDaoImpl implements PassengerDao {
     @Override
     public int register(Passenger passenger)throws Exception{
         int flag=0;
-        String sql ="insert into passenger(name,password,sex,number) values(?,?,?,?)";
-        Object[] params={passenger.getName(),passenger.getPassword() ,passenger.getSex(),passenger.getNumber()};
+        Date day = new Date();
+        SimpleDateFormat da = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//注册时间
+        String sql ="insert into passenger(name,password,sex,number,registertime) values(?,?,?,?,?)";
+        Object[] params={passenger.getName(),passenger.getPassword() ,passenger.getSex(),passenger.getNumber(),da.format(day)};
         try {
             //事务开始
             mysqlDao.update(sql,params);

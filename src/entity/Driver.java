@@ -4,14 +4,20 @@ public class Driver {
     private Integer driverid;
 
     private String name;
-
+    private String relname;//司机真实姓名
     private String pwd;
     private String sex;
     private Integer authority;
     private Integer states;
+    private Integer examineStates;//司机平台审核状态
     private String number;
     private String statesmean;//司机状态中文含义
     private String logintime;//最后一次登陆时间
+    private String motorcycle;//司机的车型
+    private String carcolor;//车的颜色
+    private String idcard;//司机身份证号
+    private String platenumber ;//司机车牌号
+    private String birthday;//司机出生日期
     public Integer getDriverid() {
         return driverid;
     }
@@ -82,5 +88,61 @@ public class Driver {
 
     public void setLogintime(String logintime) {
         this.logintime = logintime;
+    }
+
+    public Integer getExamineStates() {
+        return examineStates;
+    }
+
+    public void setExamineStates(Integer examineStates) {
+        this.examineStates = examineStates;
+    }
+
+    public String getMotorcycle() {
+        return motorcycle;
+    }
+
+    public void setMotorcycle(String motorcycle) {
+        this.motorcycle = motorcycle;
+    }
+
+    public String getCarcolor() {
+        return carcolor;
+    }
+
+    public void setCarcolor(String carcolor) {
+        this.carcolor = carcolor;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
+    }
+
+    public String getPlatenumber() {
+        return platenumber;
+    }
+
+    public void setPlatenumber(String platenumber) {
+        this.platenumber = platenumber;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getRelname() {
+        return relname;
+    }
+
+    public void setRelname(String relname) {
+        this.relname = relname;
     }
 }

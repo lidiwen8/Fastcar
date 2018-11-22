@@ -25,6 +25,9 @@
             $("#2").click(function(){
                 window.location.href='palogin.jsp';
             });
+            $("#3").click(function(){
+                window.location.href='login.jsp';
+            });
         })
     </script>
   </head>
@@ -35,6 +38,9 @@
     </div>
     <div class="col-sm-offset-2 col-sm-2 col-xs-6">
       <button class="btn btn-primary" type="submit" id="2">乘客业务</button>
+    </div>
+    <div class="col-sm-offset-2 col-sm-2 col-xs-6">
+      <button class="btn btn-info" type="submit" id="3">平台管理员</button>
     </div>
   </div>
 

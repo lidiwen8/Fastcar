@@ -70,19 +70,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          }
         }
         function loadmsg() {
-        var msg = "<%=request.getAttribute("error")%>";
+        var msg = "<%=request.getAttribute("info")%>";
         if (msg != "null") {
             alert(msg);
         }
     }
 </script>
 </head>
-<%--onloadeddata="loadmsg()"--%>
 <body onload="loadmsg()">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-6 text-center">
-				<h3>用户登录-发布图片</h3>
+				<h3>快车系统-管理员登录</h3>
 			</div>
 		</div>
 		<%
@@ -98,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			}
 		%>
-		<form class="form-horizontal col-sm-offset-3" id="loginform" method="post" action="Login" onsubmit="return login()">
+		<form class="form-horizontal col-sm-offset-3" id="loginform" method="post" action="adminServlet?action=login" onsubmit="return login()">
 			<div class="form-group">
 				<label for="username" class="col-sm-2 control-label">用户名：</label>
 				<div class="col-sm-4">
@@ -128,9 +127,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-2 col-xs-6">
 					<button class="btn btn-success btn-block" type="submit">登录</button>
-				</div>
-				<div class="col-sm-2  col-xs-6">
-					<a class="btn btn-warning btn-block" href="register.jsp">注册</a>
 				</div>
 			</div>
 		</form>

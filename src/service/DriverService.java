@@ -10,4 +10,6 @@ public interface DriverService {
     int receiptOrder2(int orderid) throws Exception;
     int changedriverstates(String name) throws Exception;//改变司机自身状态，1已经接单不可以再接其它订单，0未接单可以接其它订单中的一个
     int changedriverstates2(String name) throws Exception;//改变司机自身状态，1已经接单不可以再接其它订单，0未接单可以接其它订单中的一个
+    int application(Driver driver)throws Exception;//司机申请审核
+
 }

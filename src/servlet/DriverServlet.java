@@ -112,6 +112,69 @@ public class DriverServlet extends HttpServlet {
 
 	}
 
+	private void application(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=UTF-8");
+		String driver1= (String) request.getSession().getAttribute("driver");
+		if(driver1.equals(null)){
+			response.getWriter().print("{\"res\": -2, \"info\":\"你还没登录！\"}");
+			return;
+		}
+		if(driverService.queryDriver(driver1).getExamineStates()==3){
+//			Driver driver2=new Driver();
+//			if(driver2.getExamineStates()==3){
+				response.getWriter().print("{\"res\": -1, \"info\":\"你已经递交过申请信息了，不要重复提交！\"}");
+				return;
+//			}
+		}
+		if(driverService.queryDriver(driver1).getExamineStates()==1){
+			response.getWriter().print("{\"res\": -1, \"info\":\"你的申请信息已经通过了，不要重复提交！\"}");
+			return;
+		}
+		String relname = request.getParameter("relname");
+		String platenumber = request.getParameter("platenumber");
+		String idcard = request.getParameter("idcard");
+		String carcolor=request.getParameter("carcolor");
+		String motorcycle=  request.getParameter("motorcycle");
+		String birthday=  request.getParameter("birthday");
+		Driver driver =new Driver();
+		driver.setName(driver1);
+		driver.setRelname(relname);
+		driver.setPlatenumber(platenumber);
+		driver.setBirthday(birthday);
+		driver.setIdcard(idcard);
+		driver.setCarcolor(carcolor);
+		driver.setMotorcycle(motorcycle);
+		if(driverService.application(driver)==1){
+			response.getWriter().print("{\"res\": 1, \"info\":\"申请提交成功，请耐心等待平台审核，4个小时以内给你回复！\"}");
+			return;
+		}else{
+			response.getWriter().print("{\"res\": -1, \"info\":\"提交审核失败，请检查输入项是否正确！\"}");
+			return;
+		}
+
+	}
+
+	private void queryDriver(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = ((HttpServletRequest) request).getSession();
+		String driver = (String) session.getAttribute("driver");//获取登陆司机
+		if(driverService.queryDriver(driver)!=null){
+			Driver driver1=driverService.queryDriver(driver);
+			if(driver1.getExamineStates()==0){
+				request.setAttribute("cstm",driver1);
+				request.getRequestDispatcher("driver/drvierlist2.jsp").forward(request, response);
+				return;
+			}
+			request.setAttribute("cstm",driver1);
+			request.getRequestDispatcher("driver/drvierlist.jsp").forward(request, response);
+			return;
+		}else {
+			request.getRequestDispatcher("driver/application.jsp").forward(request, response);
+			return;
+		}
+
+	}
 	private void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String name = request.getParameter("username");
 		String password= request.getParameter("password");
@@ -208,6 +271,27 @@ public class DriverServlet extends HttpServlet {
 		   response.setCharacterEncoding("utf-8");
 		   String name = (String) request.getSession().getAttribute("driver");
 		   int orderid = Integer.parseInt(request.getParameter("id"));
+		   if (driverService.queryDriver(name) != null) {
+			   Driver driver = driverService.queryDriver(name);
+			   if (driver.getExamineStates() == 0) {
+				   response.getWriter().print("{\"res\": 3, \"info\":\"你还没有提交司机审核信息给平台哟，不能接单，请你申请并通过平台审核通过后才能接单！\"}");
+				   return;
+			   }
+		   }
+		   if (driverService.queryDriver(name) != null) {
+			   Driver driver = driverService.queryDriver(name);
+			   if (driver.getExamineStates() == 3) {
+				   response.getWriter().print("{\"res\": 4, \"info\":\"你提交的司机审核信息正在审核中，请你稍等，等通过后就能接单了！\"}");
+				   return;
+			   }
+		   }
+		   if (driverService.queryDriver(name) != null) {
+			   Driver driver = driverService.queryDriver(name);
+			   if (driver.getExamineStates() == 2) {
+				   response.getWriter().print("{\"res\": 3, \"info\":\"你提交的司机审核信息已经审核了，但是由于你填写的信息有误，审核不通过，请重新填写后提交申请！\"}");
+				   return;
+			   }
+		   }
 		   if (driverService.queryDriver2(name) != null) {
 			   Driver driver = driverService.queryDriver2(name);
 			   if (driver.getStates() == 1) {
